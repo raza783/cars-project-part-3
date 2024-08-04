@@ -2,27 +2,62 @@
 <html>
 <head>
     <title>Car Price Prediction</title>
+    <script>
+        function validateForm() {
+            let year = document.getElementById('year').value;
+            if (year < 1980 || year > 2024) {
+                alert('Year must be between 1980 and 2024.');
+                return false;
+            }
+
+            let km = document.getElementById('km').value;
+            if (km < 0) {
+                alert('Kilometers must be a positive number.');
+                return false;
+            }
+
+            let capacityEngine = document.getElementById('capacity_engine').value;
+            if (capacityEngine < 0) {
+                alert('Capacity Engine must be a positive number.');
+                return false;
+            }
+
+            let hand = document.getElementById('hand').value;
+            if (hand < 0) {
+                alert('Hand must be a positive number.');
+                return false;
+            }
+
+            let picNum = document.getElementById('pic_num').value;
+            if (picNum < 0) {
+                alert('Number of Pictures must be a positive number.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 <body>
     <h1>Car Price Prediction</h1>
-    <form action="/predict" method="post">
+    <form action="/predict" method="post" onsubmit="return validateForm()">
         <label for="year">Year:</label>
-        <input type="number" id="year" name="year"><br><br>
+        <input type="number" id="year" name="year" required><br><br>
 
         <label for="manufacturer">Manufacturer:</label>
-        <input type="text" id="manufacturer" name="manufacturer"><br><br>
+        <input type="text" id="manufacturer" name="manufacturer" required><br><br>
 
         <label for="model">Model:</label>
-        <input type="text" id="model" name="model"><br><br>
+        <input type="text" id="model" name="model" required><br><br>
 
         <label for="hand">Hand:</label>
-        <input type="number" id="hand" name="hand"><br><br>
+        <input type="number" id="hand" name="hand" min="0"><br><br>
 
         <label for="gear">Gear:</label>
         <input type="text" id="gear" name="gear"><br><br>
 
         <label for="capacity_engine">Capacity Engine:</label>
-        <input type="number" step="0.1" id="capacity_engine" name="capacity_engine"><br><br>
+        <input type="number" step="0.1" id="capacity_engine" name="capacity_engine" min="0"><br><br>
 
         <label for="engine_type">Engine Type:</label>
         <input type="text" id="engine_type" name="engine_type"><br><br>
@@ -40,16 +75,13 @@
         <input type="text" id="city" name="city"><br><br>
 
         <label for="km">Kilometers:</label>
-        <input type="number" step="0.1" id="km" name="km"><br><br>
+        <input type="number" step="0.1" id="km" name="km" min="0"><br><br>
 
         <label for="test">Test Date:</label>
         <input type="date" id="test" name="test"><br><br>
 
-        <label for="supply_score">Supply Score:</label>
-        <input type="number" step="0.1" id="supply_score" name="supply_score"><br><br>
-
         <label for="pic_num">Number of Pictures:</label>
-        <input type="number" id="pic_num" name="pic_num"><br><br>
+        <input type="number" id="pic_num" name="pic_num" min="0"><br><br>
 
         <label for="color">Color:</label>
         <input type="text" id="color" name="color"><br><br>
